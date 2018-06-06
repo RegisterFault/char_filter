@@ -139,7 +139,7 @@ int main()
 		}
 
 		if (check_ascii){
-			if ( in >= 0x00 && in <= 0x127 ){
+			if ( in >= 0x00 && in <= 0x7F ){
 				matched_action(in,exclusive);
 				continue;
 			}
