@@ -1,0 +1,49 @@
+cf - char filter
+default: print only ascii
+
+
+positive / negative filter string:
+	positive: only print instances of individual characters appearing.
+	negative: leave out instances of individual characters appearing.
+
+class options are cumulative
+
+character classes:
+alphanumeric
+digit
+space
+upper
+lower
+blank
+nonprint
+printable
+punctuation
+
+
+c library character class functions
+islower -l --lower
+isupper -u --upper
+isalpha -a --alpha
+isdigit -d --digit
+isalnum -m --alnum
+isxdigit 
+ispunct -p --punct
+isspace -s --space
+isblank -b --blank
+isgraph -g --graph
+iscntrl -c --control
+isascii -
+
+template -t --template
+
+exclusive filter -x --exclusive
+
+binary -B --binary
+	treat newlines as a normal char
+
+input file -i --input (stdin)
+output file -o --output (stdout)
+
+
+FUTURE OPTIMIZATION:
+ function pointer array that dispatches tests.
