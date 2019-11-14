@@ -42,6 +42,29 @@ int test_template(int in, char *template)
 	return 0;
 }
 
+void print_help(void)
+{
+        char * help_string = 
+"char_filter: a very simple character-by-character filter\n"
+"default: prints if ascii\n"
+"options: \n"
+"\t-a:\tcheck alpha\n"
+"\t-b:\tcheck blank\n"
+"\t-B:\tbinary mode (process newlines)\n"
+"\t-c:\tcheck control characters\n"
+"\t-d:\tcheck digit\n"
+"\t-g:\tcheck graph\n"
+"\t-l:\tcheck lower case\n"
+"\t-m:\tcheck alphanumeric\n"
+"\t-p:\tcheck punctuation\n"
+"\t-u:\tcheck upper case\n"
+"\t-t:\tcheck template of provided chars\n"
+"\t-i:\tinput file\n"
+"\t-o:\toutput file\n"
+"\t-x:\texclusive mode, doesn't print if matched\n";
+        fprintf(stderr,help_string);
+}
+
 int main(int argc, char *argv[])
 {
 	int in;
@@ -73,7 +96,7 @@ int main(int argc, char *argv[])
 	FILE *input;
 	FILE *output;
 
-	while ((opt = getopt(argc, argv, "abBcdglmpuxt:i:o:")) != -1){
+	while ((opt = getopt(argc, argv, "habBcdglmpuxt:i:o:")) != -1){
 		switch(opt){
 		case 'a':
 			options = 1;
@@ -132,6 +155,10 @@ int main(int argc, char *argv[])
 			output_file = 1;
 			outfile = optarg;
 			break;
+                case 'h':
+                        print_help();
+                        exit(0);
+                        break;
 		case '?':
 			if (optopt == 't')
 				fprintf(stderr,"Option -t requires a string of characters to be filtered\n");
